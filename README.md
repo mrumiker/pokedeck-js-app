@@ -1,2 +1,2 @@
-# pokedex-js-app
+# pokedeck-js-app
  Collect them all!
