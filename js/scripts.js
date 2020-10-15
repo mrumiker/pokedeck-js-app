@@ -25,7 +25,7 @@ for (let i = 0; i < pokemonList.length; i++) {
   document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height})`);
   //add special flare if pokemon is bigger than 1 meter
   if (pokemonList[i].height > 1) {
-    document.write(' - Wow, that\'s a big pokemon!');
+    document.write(' - Wow, that\'s a big pokemon! 🤩');
   }
   document.write('<br>');
 }
