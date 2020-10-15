@@ -6,5 +6,23 @@ body {
   text-align: justify;
   line-height: 25px;
   font-family: 'Montserrat', sans-serif;
-  padding: 50px;
+}
+
+.page-header {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  align-items: center;
+}
+
+.page-header__item {
+  flex: 0 1 200px;
+}
+
+.page-header__item:first-child {
+  height: 40px;
+}
+
+main {
+  padding: 0 27px;
 }
