@@ -3,7 +3,8 @@
 }
 
 body {
-  text-align: center;
+  text-align: justify;
+  line-height: 25px;
   font-family: 'Montserrat', sans-serif;
   padding: 50px;
 }
