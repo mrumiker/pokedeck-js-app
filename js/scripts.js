@@ -1,27 +1,47 @@
+let pokemonRepository = (function() {
 // initialize an empty array
-let pokemonList = [];
+  let pokemonList = [];
 
-//populate the array with pokemons
-pokemonList[0] = {
-  name: 'Bulbasaur',
-  height: 0.7,
-  types: ['grass','poison']
-};
+  //populate the array with pokemons
+  pokemonList.push(
+    {
+    name: 'Bulbasaur',
+    height: 0.7,
+    types: ['grass','poison']
+    },
 
-pokemonList[1] = {
-  name: 'Shroomish',
-  height: 0.4,
-  types: 'grass'
-};
+    {
+    name: 'Shroomish',
+    height: 0.4,
+    types: 'grass'
+    },
 
-pokemonList[2] = {
-  name: 'Archeops',
-  height: 1.4,
-  types: ['rock', 'flying']
-};
+    {
+    name: 'Archeops',
+    height: 1.4,
+    types: ['rock', 'flying']
+    }
+  );
 
-//make for loop to get names and heights of each pokemon and print them
-pokemonList.forEach(function(pokemon) {
+  function getAll() {
+    return pokemonList;
+  }
+
+  function add(pokemon) {
+    if ((typeof pokemon === 'object') && (Object.keys(pokemon) === ['name', 'height', 'types'])) {
+      pokemonList.push(pokemon);
+    }
+    return;
+  }
+
+  return {
+    getAll: getAll,
+    add: add
+  }
+})();
+
+//make forEach loop to get names and heights of each pokemon and print them
+pokemonRepository.getAll().forEach(function(pokemon) {
   document.write(`${pokemon.name} (height: ${pokemon.height})`);
   //add special flare if pokemon is bigger than 1 meter
   if (pokemon.height > 1) {
