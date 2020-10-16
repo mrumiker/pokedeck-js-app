@@ -22,18 +22,19 @@ let pokemonRepository = (function() {
     types: ['rock', 'flying']
     }
   );
-
+  //Declare functions
   function getAll() {
     return pokemonList;
   }
 
   function add(pokemon) {
+    //Only add to array if format is followed
     if ((typeof pokemon === 'object') && (Object.keys(pokemon) === ['name', 'height', 'types'])) {
       pokemonList.push(pokemon);
     }
     return;
   }
-
+  //Return object with both new functions
   return {
     getAll: getAll,
     add: add
