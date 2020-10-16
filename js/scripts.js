@@ -21,11 +21,11 @@ pokemonList[2] = {
 };
 
 //make for loop to get names and heights of each pokemon and print them
-for (let i = 0; i < pokemonList.length; i++) {
-  document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height})`);
+pokemonList.forEach(function(pokemon) {
+  document.write(`${pokemon.name} (height: ${pokemon.height})`);
   //add special flare if pokemon is bigger than 1 meter
-  if (pokemonList[i].height > 1) {
+  if (pokemon.height > 1) {
     document.write(' - Wow, that\'s a big pokemon! 🤩');
   }
   document.write('<br>');
-}
+});
