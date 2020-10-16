@@ -38,7 +38,7 @@ let pokemonRepository = (function() {
   return {
     getAll: getAll,
     add: add
-  }
+  };
 })();
 
 //make forEach loop to get names and heights of each pokemon and print them
