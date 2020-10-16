@@ -1,25 +1,25 @@
 let pokemonRepository = (function() {
-// initialize an empty array
+  // initialize an empty array
   let pokemonList = [];
 
   //populate the array with pokemons
   pokemonList.push(
     {
-    name: 'Bulbasaur',
-    height: 0.7,
-    types: ['grass','poison']
+      name: 'Bulbasaur',
+      height: 0.7,
+      types: ['grass','poison']
     },
 
     {
-    name: 'Shroomish',
-    height: 0.4,
-    types: 'grass'
+      name: 'Shroomish',
+      height: 0.4,
+      types: 'grass'
     },
 
     {
-    name: 'Archeops',
-    height: 1.4,
-    types: ['rock', 'flying']
+      name: 'Archeops',
+      height: 1.4,
+      types: ['rock', 'flying']
     }
   );
   //Declare functions
