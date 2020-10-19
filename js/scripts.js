@@ -56,6 +56,15 @@ let pokemonRepository = (function() {
   };
 })();
 
+//Create function to search for Pokemon entry by name
+function namesearch(myName) {
+  let myArray = pokemonRepository.getAll().filter(pokemon => pokemon.name === myName);
+  if (myArray.length === 0) {
+    return 'Not Found';
+  }
+  return myArray;
+}
+
 //make forEach loop to get names and heights of each pokemon and print them
 pokemonRepository.getAll().forEach(function(pokemon) {
   document.write(`${pokemon.name} (height: ${pokemon.height})`);
