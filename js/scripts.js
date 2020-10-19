@@ -27,12 +27,27 @@ let pokemonRepository = (function() {
     return pokemonList;
   }
 
+  //Assign array of keys from pokemonList to a variable
+  let arrayOfKeys = Object.keys(pokemonList[0]);
+
+  //Create function to add entry to pokemonList
   function add(pokemon) {
-    //Only add to array if format is followed
-    if ((typeof pokemon === 'object') && (Object.keys(pokemon) === ['name', 'height', 'types'])) {
+    //Only add object to array if format is followed
+    if ((typeof pokemon === 'object') &&
+    (Object.keys(pokemon).length === arrayOfKeys.length) &&
+    (function (entry, myKeys) {
+      for (i = 0; i < myKeys.length; i++) {
+        if (Object.keys(entry)[i] !== myKeys[i]) {
+          return false;
+        }
+      }
+      return true;
+    })(pokemon, arrayOfKeys))
+    {
       pokemonList.push(pokemon);
+      return 0;
     }
-    return;
+    return 1;
   }
   //Return object with both new functions
   return {
