@@ -49,10 +49,21 @@ let pokemonRepository = (function() {
     }
     return 1;
   }
+
+  function addListItem(pokemon) {
+    let pokeList = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon;
+    button.classList.add('button');
+    listItem.appendChild(button);
+    pokeList.appendChild(listItem);
+  }
   //Return object with both new functions
   return {
     getAll: getAll,
-    add: add
+    add: add,
+    addListItem: addListItem
   };
 })();
 
@@ -70,12 +81,7 @@ function namesearch(myName) {
 let pokeList = document.querySelector('.pokemon-list');
 
 pokemonRepository.getAll().forEach(function(pokemon) {
-  let listItem = document.createElement('li');
-  let button = document.createElement('button');
-  button.innerText = pokemon.name;
-  button.classList.add('button');
-  listItem.appendChild(button);
-  pokeList.appendChild(listItem);
+  pokemonRepository.addListItem(pokemon.name);
 });
 //pokemonRepository.getAll().forEach(function(pokemon) {
 //  document.write(`${pokemon.name} (height: ${pokemon.height})`);

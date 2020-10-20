@@ -41,11 +41,16 @@ main {
   padding: 0 27px;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .button,
 .button:visited {
   border: none;
   display: inline-block;
   font-family: inherit;
+  margin: 10px 0;
   background-color: var(--primary-color);
   color: var(--button-text);
   font-size: 1em;
