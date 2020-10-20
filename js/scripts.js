@@ -66,11 +66,22 @@ function namesearch(myName) {
 }
 
 //make forEach loop to get names and heights of each pokemon and print them
+
+let pokeList = document.querySelector('.pokemon-list');
+
 pokemonRepository.getAll().forEach(function(pokemon) {
-  document.write(`${pokemon.name} (height: ${pokemon.height})`);
-  //add special flare if pokemon is bigger than 1 meter
-  if (pokemon.height > 1) {
-    document.write(' - Wow, that\'s a big pokemon! 🤩');
-  }
-  document.write('<br>');
+  let listItem = document.createElement('li');
+  let button = document.createElement('button');
+  button.innerText = pokemon.name;
+  button.classList.add('button');
+  listItem.appendChild(button);
+  pokeList.appendChild(listItem);
 });
+//pokemonRepository.getAll().forEach(function(pokemon) {
+//  document.write(`${pokemon.name} (height: ${pokemon.height})`);
+  //add special flare if pokemon is bigger than 1 meter
+//  if (pokemon.height > 1) {
+//    document.write(' - Wow, that\'s a big pokemon! 🤩');
+//  }
+//  document.write('<br>');
+// });
