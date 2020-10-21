@@ -60,7 +60,7 @@ let pokemonRepository = (function() {
     pokeList.appendChild(listItem);
     //log pokemon info in console when button is clicked
     button.addEventListener('click', function(event) {
-      showDetails(pokemon);
+      showDetails(pokemon.name);
     })
   }
 
