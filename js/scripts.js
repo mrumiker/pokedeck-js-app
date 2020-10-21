@@ -61,7 +61,7 @@ let pokemonRepository = (function() {
     //log pokemon info in console when button is clicked
     button.addEventListener('click', function(event) {
       showDetails(pokemon.name);
-    })
+    });
   }
 
   function showDetails(pokemon) {
