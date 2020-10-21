@@ -49,7 +49,7 @@ let pokemonRepository = (function() {
     }
     return 1;
   }
-
+  //Create function to make buttons with name of each pokemon
   function addListItem(pokemon) {
     let pokeList = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
@@ -59,11 +59,16 @@ let pokemonRepository = (function() {
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
   }
-  //Return object with both new functions
+
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  }
+  //Return object with all new functions
   return {
     getAll: getAll,
     add: add,
-    addListItem: addListItem
+    addListItem: addListItem,
+    showDetails: showDetails
   };
 })();
 
@@ -83,6 +88,7 @@ let pokeList = document.querySelector('.pokemon-list');
 pokemonRepository.getAll().forEach(function(pokemon) {
   pokemonRepository.addListItem(pokemon.name);
 });
+
 //pokemonRepository.getAll().forEach(function(pokemon) {
 //  document.write(`${pokemon.name} (height: ${pokemon.height})`);
   //add special flare if pokemon is bigger than 1 meter
