@@ -54,10 +54,14 @@ let pokemonRepository = (function() {
     let pokeList = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
     let button = document.createElement('button');
-    button.innerText = pokemon;
+    button.innerText = pokemon.name;
     button.classList.add('button');
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
+    //log pokemon info in console when button is clicked
+    button.addEventListener('click', function(event) {
+      showDetails(pokemon);
+    })
   }
 
   function showDetails(pokemon) {
@@ -86,7 +90,7 @@ function namesearch(myName) {
 let pokeList = document.querySelector('.pokemon-list');
 
 pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon.name);
+  pokemonRepository.addListItem(pokemon);
 });
 
 //pokemonRepository.getAll().forEach(function(pokemon) {
