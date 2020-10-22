@@ -2,7 +2,7 @@ let pokemonRepository = (function() {
   // initialize an empty array
   let pokemonList = [];
   // identify target URL where pokemons live and assign to variable
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1050';
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   //Declare functions
   function getAll() {
