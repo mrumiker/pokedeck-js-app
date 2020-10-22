@@ -1,27 +1,29 @@
 let pokemonRepository = (function() {
   // initialize an empty array
   let pokemonList = [];
+  // identify target URL where pokemons live and assign to variable
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   //populate the array with pokemons
-  pokemonList.push(
-    {
-      name: 'Bulbasaur',
-      height: 0.7,
-      types: ['grass','poison']
-    },
+  //pokemonList.push(
+  //  {
+  //    name: 'Bulbasaur',
+  //    height: 0.7,
+  //    types: ['grass','poison']
+  //  },
 
-    {
-      name: 'Shroomish',
-      height: 0.4,
-      types: 'grass'
-    },
+  //{
+  //    name: 'Shroomish',
+  //    height: 0.4,
+  //    types: 'grass'
+  //  },
 
-    {
-      name: 'Archeops',
-      height: 1.4,
-      types: ['rock', 'flying']
-    }
-  );
+  //  {
+  //    name: 'Archeops',
+  //    height: 1.4,
+  //    types: ['rock', 'flying']
+  //  }
+  //);
   //Declare functions
   function getAll() {
     return pokemonList;
@@ -67,12 +69,32 @@ let pokemonRepository = (function() {
   function showDetails(pokemon) {
     console.log(pokemon);
   }
+  //create function to get pokemons from external api
+  function loadList() {
+    return fetch(apiUrl).then(function(response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function(item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function(e) {
+      console.error(e);
+    })
+  }
+
+    })
+  }
   //Return object with all new functions
   return {
     getAll: getAll,
     add: add,
     addListItem: addListItem,
-    showDetails: showDetails
+    showDetails: showDetails,
+    loadList: loadList
   };
 })();
 
@@ -84,6 +106,12 @@ function namesearch(myName) {
   }
   return myArray;
 }
+
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
 
 //make forEach loop to get names and heights of each pokemon and print them
 
