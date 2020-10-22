@@ -34,22 +34,8 @@ let pokemonRepository = (function() {
 
   //Create function to add entry to pokemonList
   function add(pokemon) {
-    //Only add object to array if format is followed
-    if ((typeof pokemon === 'object') &&
-    (Object.keys(pokemon).length === arrayOfKeys.length) &&
-    (function (entry, myKeys) {
-      for (i = 0; i < myKeys.length; i++) {
-        if (Object.keys(entry)[i] !== myKeys[i]) {
-          return false;
-        }
-      }
-      return true;
-    })(pokemon, arrayOfKeys))
-    {
-      pokemonList.push(pokemon);
-      return 0;
-    }
-    return 1;
+    pokemonList.push(pokemon);
+    return 0;    
   }
   //Create function to make buttons with name of each pokemon
   function addListItem(pokemon) {
