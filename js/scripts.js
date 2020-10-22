@@ -4,26 +4,6 @@ let pokemonRepository = (function() {
   // identify target URL where pokemons live and assign to variable
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-  //populate the array with pokemons
-  //pokemonList.push(
-  //  {
-  //    name: 'Bulbasaur',
-  //    height: 0.7,
-  //    types: ['grass','poison']
-  //  },
-
-  //{
-  //    name: 'Shroomish',
-  //    height: 0.4,
-  //    types: 'grass'
-  //  },
-
-  //  {
-  //    name: 'Archeops',
-  //    height: 1.4,
-  //    types: ['rock', 'flying']
-  //  }
-  //);
   //Declare functions
   function getAll() {
     return pokemonList;
