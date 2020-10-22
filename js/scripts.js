@@ -29,9 +29,6 @@ let pokemonRepository = (function() {
     return pokemonList;
   }
 
-  //Assign array of keys from pokemonList to a variable
-  let arrayOfKeys = Object.keys(pokemonList[0]);
-
   //Create function to add entry to pokemonList
   function add(pokemon) {
     pokemonList.push(pokemon);
