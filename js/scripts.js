@@ -35,7 +35,7 @@ let pokemonRepository = (function() {
   //Create function to add entry to pokemonList
   function add(pokemon) {
     pokemonList.push(pokemon);
-    return 0;    
+    return 0;
   }
   //Create function to make buttons with name of each pokemon
   function addListItem(pokemon) {
@@ -72,15 +72,28 @@ let pokemonRepository = (function() {
     })
   }
 
-    })
+  //create function to load details from URL
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function(response) {
+      return response.json();
+    }).then(function(details) {
+      //add details to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function(e) {
+      console.error(e);
+    });
   }
-  //Return object with all new functions
+  //Return object with all functions
   return {
     getAll: getAll,
     add: add,
     addListItem: addListItem,
     showDetails: showDetails,
-    loadList: loadList
+    loadList: loadList,
+    loadDetails: loadDetails
   };
 })();
 
