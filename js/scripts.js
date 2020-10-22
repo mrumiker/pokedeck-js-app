@@ -51,9 +51,11 @@ let pokemonRepository = (function() {
       showDetails(pokemon.name);
     });
   }
-
+  //create function to show details of pokemon in console
   function showDetails(pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function() {
+      console.log(pokemon);
+    })
   }
   //create function to get pokemons from external api
   function loadList() {
