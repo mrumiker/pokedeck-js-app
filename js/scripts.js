@@ -37,7 +37,7 @@ let pokemonRepository = (function() {
   //create function to get pokemons from external api
   function loadList() {
     return fetch(apiUrl).then(function(response) {
-      return response.JSON();
+      return response.json();
     }).then(function (json) {
       json.results.forEach(function(item) {
         let pokemon = {
@@ -55,7 +55,7 @@ let pokemonRepository = (function() {
   function loadDetails(item) {
     let url = item.detailsUrl;
     return fetch(url).then(function(response) {
-      return response.JSON();
+      return response.json();
     }).then(function(details) {
       //add details to the item
       item.imageUrl = details.sprites.front_default;
