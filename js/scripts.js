@@ -55,7 +55,7 @@ let pokemonRepository = (function() {
       }
       //Create weight element
       let weightElement = document.createElement('p');
-      if (pokemon.weight > 199) {
+      if (pokemon.weight > 499) {
         weightElement.innerText = (`weight:  ${pokemon.weight} - Wow, that's a plump pokemon! 🤩`);
       }
       else {
