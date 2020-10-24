@@ -2,7 +2,7 @@ let pokemonRepository = (function() {
   // initialize an empty array
   let pokemonList = [];
   // identify target URL where pokemons live and assign to variable
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1050';
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1050';
 
   //Declare functions
   function getAll() {
@@ -30,9 +30,36 @@ let pokemonRepository = (function() {
   }
   //create function to show details of pokemon in console
   function showDetails(pokemon) {
-    loadDetails(pokemon).then(function() {
-      console.log(pokemon);
-    })
+    loadDetails(pokemon).then(function(pokemon) {
+      let modalContainer = document.querySelector('#modal-container');
+      //clear anything remaining in modalContainer
+      modalContainer.innerHTML = '';
+      //Create modal
+      let modal = document.createElement('div');
+      modal.classList.add('modal');
+      //Create close button
+      let closeButtonElement = document.createElement('button');
+      closeButtonElement.classList.add('modal-close');
+      closeButtonElement.innerText = 'Close';
+      //closeButtonElement.addEventListener('click', hideModal);
+      //Create Title
+      let titleElement = document.createElement('h2');
+      titleElement.innerText = 'pokemon.name';
+      //Create Content element
+      let contentElement = document.createElement('p');
+      contentElement.innerText = 'height: pokemon.height';
+      //Hang the elements onto the modal
+      modal.appendChild(closeButtonElement);
+      modal.appendChild(titleElement);
+      modal.appendChild(contentElement);
+      //Hang the modal on the container
+      modalContainer.appendChild(modal);
+      //Make the modal appear
+      modalContainer.classList.add('is-visible');
+
+    }).catch(function(e) {
+      console.error(e);
+    });
   }
   //create function to get pokemons from external api
   function loadList() {
@@ -66,6 +93,15 @@ let pokemonRepository = (function() {
       console.error(e);
     });
   }
+
+  //Create function to search for Pokemon entry by name
+  function namesearch(myName) {
+    let myArray = pokemonRepository.getAll().filter(pokemon => pokemon.name === myName);
+    if (myArray.length === 0) {
+      return 'Not Found';
+    }
+    return myArray;
+  }
   //Return object with all functions
   return {
     getAll: getAll,
@@ -73,18 +109,12 @@ let pokemonRepository = (function() {
     addListItem: addListItem,
     showDetails: showDetails,
     loadList: loadList,
-    loadDetails: loadDetails
+    loadDetails: loadDetails,
+    namesearch: namesearch
   };
 })();
 
-//Create function to search for Pokemon entry by name
-function namesearch(myName) {
-  let myArray = pokemonRepository.getAll().filter(pokemon => pokemon.name === myName);
-  if (myArray.length === 0) {
-    return 'Not Found';
-  }
-  return myArray;
-}
+
 
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
