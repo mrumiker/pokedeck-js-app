@@ -30,7 +30,7 @@ let pokemonRepository = (function() {
   }
   //create function to show details of pokemon in console
   function showDetails(pokemon) {
-    loadDetails(pokemon).then(function(pokemon) {
+    loadDetails(pokemon).then(function() {
       let modalContainer = document.querySelector('#modal-container');
       //clear anything remaining in modalContainer
       modalContainer.innerHTML = '';
@@ -44,14 +44,14 @@ let pokemonRepository = (function() {
       //closeButtonElement.addEventListener('click', hideModal);
       //Create Title
       let titleElement = document.createElement('h2');
-      titleElement.innerText = 'pokemon.name';
+      titleElement.innerText = pokemon.name;
       //Create Content element
-      let contentElement = document.createElement('p');
-      contentElement.innerText = 'height: pokemon.height';
+      let heightElement = document.createElement('p');
+      heightElement.innerText = (`height:  ${pokemon.height}`);
       //Hang the elements onto the modal
       modal.appendChild(closeButtonElement);
       modal.appendChild(titleElement);
-      modal.appendChild(contentElement);
+      modal.appendChild(heightElement);
       //Hang the modal on the container
       modalContainer.appendChild(modal);
       //Make the modal appear
