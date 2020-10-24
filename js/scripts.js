@@ -45,13 +45,27 @@ let pokemonRepository = (function() {
       //Create Title
       let titleElement = document.createElement('h2');
       titleElement.innerText = pokemon.name;
-      //Create Content element
+      //Create height element
       let heightElement = document.createElement('p');
+      if (pokemon.height > 49) {
+        heightElement.innerText = (`height:  ${pokemon.height} - Wow, that's a big pokemon! 🤩`);
+      }
+      else {
       heightElement.innerText = (`height:  ${pokemon.height}`);
+      }
+      //Create weight element
+      let weightElement = document.createElement('p');
+      if (pokemon.weight > 199) {
+        weightElement.innerText = (`weight:  ${pokemon.weight} - Wow, that's a plump pokemon! 🤩`);
+      }
+      else {
+      weightElement.innerText = (`weight:  ${pokemon.weight}`);
+      }
       //Hang the elements onto the modal
       modal.appendChild(closeButtonElement);
       modal.appendChild(titleElement);
       modal.appendChild(heightElement);
+      modal.appendChild(weightElement);
       //Hang the modal on the container
       modalContainer.appendChild(modal);
       //Make the modal appear
