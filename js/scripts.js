@@ -51,7 +51,7 @@ let pokemonRepository = (function() {
         heightElement.innerText = (`height:  ${pokemon.height} - Wow, that's a big pokemon! 🤩`);
       }
       else {
-      heightElement.innerText = (`height:  ${pokemon.height}`);
+        heightElement.innerText = (`height:  ${pokemon.height}`);
       }
       //Create weight element
       let weightElement = document.createElement('p');
@@ -59,7 +59,7 @@ let pokemonRepository = (function() {
         weightElement.innerText = (`weight:  ${pokemon.weight} - Wow, that's a plump pokemon! 🤩`);
       }
       else {
-      weightElement.innerText = (`weight:  ${pokemon.weight}`);
+        weightElement.innerText = (`weight:  ${pokemon.weight}`);
       }
       //Create image element
       let imageElement = document.createElement('img');
