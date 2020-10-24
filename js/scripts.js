@@ -41,7 +41,7 @@ let pokemonRepository = (function() {
       let closeButtonElement = document.createElement('button');
       closeButtonElement.classList.add('modal-close');
       closeButtonElement.innerText = 'Close';
-      //closeButtonElement.addEventListener('click', hideModal);
+      closeButtonElement.addEventListener('click', hideModal);
       //Create Title
       let titleElement = document.createElement('h2');
       titleElement.innerText = pokemon.name;
@@ -61,19 +61,30 @@ let pokemonRepository = (function() {
       else {
       weightElement.innerText = (`weight:  ${pokemon.weight}`);
       }
+      //Create image element
+      let imageElement = document.createElement('img');
+      imageElement.src = pokemon.imageUrl;
       //Hang the elements onto the modal
       modal.appendChild(closeButtonElement);
       modal.appendChild(titleElement);
       modal.appendChild(heightElement);
       modal.appendChild(weightElement);
+      modal.appendChild(imageElement);
       //Hang the modal on the container
       modalContainer.appendChild(modal);
       //Make the modal appear
       modalContainer.classList.add('is-visible');
 
+
+
     }).catch(function(e) {
       console.error(e);
     });
+  }
+  //create function to hide the modal
+  function hideModal() {
+    let modalContainer = document.querySelector('#modal-container');
+    modalContainer.classList.remove('is-visible');
   }
   //create function to get pokemons from external api
   function loadList() {
