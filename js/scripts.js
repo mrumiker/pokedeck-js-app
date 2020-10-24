@@ -77,6 +77,13 @@ let pokemonRepository = (function() {
 
 
 
+      //allow user to click outside modal to close modal
+      modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+          hideModal();
+        }
+      });
     }).catch(function(e) {
       console.error(e);
     });
@@ -118,7 +125,13 @@ let pokemonRepository = (function() {
       console.error(e);
     });
   }
-
+  //allow user to press 'escape' to close modal
+  window.addEventListener('keydown', (e) => {
+    let modalContainer = document.querySelector('#modal-container');
+    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+      hideModal();
+    }
+  });
   //Create function to search for Pokemon entry by name
   function namesearch(myName) {
     let myArray = pokemonRepository.getAll().filter(pokemon => pokemon.name === myName);
@@ -135,7 +148,8 @@ let pokemonRepository = (function() {
     showDetails: showDetails,
     loadList: loadList,
     loadDetails: loadDetails,
-    namesearch: namesearch
+    namesearch: namesearch,
+    hideModal: hideModal
   };
 })();
 
