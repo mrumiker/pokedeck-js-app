@@ -2,7 +2,7 @@ let pokemonRepository = (function() {
   // initialize an empty array
   let pokemonList = [];
   // identify target URL where pokemons live and assign to variable
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1050';
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1050';
 
   //Declare functions
   function getAll() {
@@ -31,8 +31,67 @@ let pokemonRepository = (function() {
   //create function to show details of pokemon in console
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function() {
-      console.log(pokemon);
-    })
+      let modalContainer = document.querySelector('#modal-container');
+      //clear anything remaining in modalContainer
+      modalContainer.innerHTML = '';
+      //Create modal
+      let modal = document.createElement('div');
+      modal.classList.add('modal');
+      //Create close button
+      let closeButtonElement = document.createElement('button');
+      closeButtonElement.classList.add('modal-close');
+      closeButtonElement.innerText = 'Close';
+      closeButtonElement.addEventListener('click', hideModal);
+      //Create Title
+      let titleElement = document.createElement('h2');
+      titleElement.innerText = pokemon.name;
+      //Create height element
+      let heightElement = document.createElement('p');
+      if (pokemon.height > 49) {
+        heightElement.innerText = (`height:  ${pokemon.height} - Wow, that's a big pokemon! 🤩`);
+      }
+      else {
+      heightElement.innerText = (`height:  ${pokemon.height}`);
+      }
+      //Create weight element
+      let weightElement = document.createElement('p');
+      if (pokemon.weight > 199) {
+        weightElement.innerText = (`weight:  ${pokemon.weight} - Wow, that's a plump pokemon! 🤩`);
+      }
+      else {
+      weightElement.innerText = (`weight:  ${pokemon.weight}`);
+      }
+      //Create image element
+      let imageElement = document.createElement('img');
+      imageElement.src = pokemon.imageUrl;
+      //Hang the elements onto the modal
+      modal.appendChild(closeButtonElement);
+      modal.appendChild(titleElement);
+      modal.appendChild(heightElement);
+      modal.appendChild(weightElement);
+      modal.appendChild(imageElement);
+      //Hang the modal on the container
+      modalContainer.appendChild(modal);
+      //Make the modal appear
+      modalContainer.classList.add('is-visible');
+
+
+
+      //allow user to click outside modal to close modal
+      modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+          hideModal();
+        }
+      });
+    }).catch(function(e) {
+      console.error(e);
+    });
+  }
+  //create function to hide the modal
+  function hideModal() {
+    let modalContainer = document.querySelector('#modal-container');
+    modalContainer.classList.remove('is-visible');
   }
   //create function to get pokemons from external api
   function loadList() {
@@ -66,6 +125,21 @@ let pokemonRepository = (function() {
       console.error(e);
     });
   }
+  //allow user to press 'escape' to close modal
+  window.addEventListener('keydown', (e) => {
+    let modalContainer = document.querySelector('#modal-container');
+    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+      hideModal();
+    }
+  });
+  //Create function to search for Pokemon entry by name
+  function namesearch(myName) {
+    let myArray = pokemonRepository.getAll().filter(pokemon => pokemon.name === myName);
+    if (myArray.length === 0) {
+      return 'Not Found';
+    }
+    return myArray;
+  }
   //Return object with all functions
   return {
     getAll: getAll,
@@ -73,18 +147,13 @@ let pokemonRepository = (function() {
     addListItem: addListItem,
     showDetails: showDetails,
     loadList: loadList,
-    loadDetails: loadDetails
+    loadDetails: loadDetails,
+    namesearch: namesearch,
+    hideModal: hideModal
   };
 })();
 
-//Create function to search for Pokemon entry by name
-function namesearch(myName) {
-  let myArray = pokemonRepository.getAll().filter(pokemon => pokemon.name === myName);
-  if (myArray.length === 0) {
-    return 'Not Found';
-  }
-  return myArray;
-}
+
 
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
