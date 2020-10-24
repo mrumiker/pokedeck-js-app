@@ -51,7 +51,7 @@ let pokemonRepository = (function() {
         heightElement.innerText = (`height:  ${pokemon.height} - Wow, that's a big pokemon! 🤩`);
       }
       else {
-      heightElement.innerText = (`height:  ${pokemon.height}`);
+        heightElement.innerText = (`height:  ${pokemon.height}`);
       }
       //Create weight element
       let weightElement = document.createElement('p');
@@ -59,7 +59,7 @@ let pokemonRepository = (function() {
         weightElement.innerText = (`weight:  ${pokemon.weight} - Wow, that's a plump pokemon! 🤩`);
       }
       else {
-      weightElement.innerText = (`weight:  ${pokemon.weight}`);
+        weightElement.innerText = (`weight:  ${pokemon.weight}`);
       }
       //Create image element
       let imageElement = document.createElement('img');
@@ -153,8 +153,6 @@ let pokemonRepository = (function() {
   };
 })();
 
-
-
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
@@ -168,12 +166,3 @@ let pokeList = document.querySelector('.pokemon-list');
 pokemonRepository.getAll().forEach(function(pokemon) {
   pokemonRepository.addListItem(pokemon);
 });
-
-//pokemonRepository.getAll().forEach(function(pokemon) {
-//  document.write(`${pokemon.name} (height: ${pokemon.height})`);
-  //add special flare if pokemon is bigger than 1 meter
-//  if (pokemon.height > 1) {
-//    document.write(' - Wow, that\'s a big pokemon! 🤩');
-//  }
-//  document.write('<br>');
-// });
