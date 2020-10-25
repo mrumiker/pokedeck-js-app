@@ -108,7 +108,7 @@ let pokemonRepository = (function() {
       });
     }).catch(function(e) {
       console.error(e);
-    }).finally(hideLoadingMessage());
+    }).finally(() => hideLoadingMessage());
   }
 
   //create function to load details from URL
@@ -125,7 +125,7 @@ let pokemonRepository = (function() {
       item.types = details.types;
     }).catch(function(e) {
       console.error(e);
-    }).finally(hideLoadingMessage());
+    }).finally(() => hideLoadingMessage());
   }
   //allow user to press 'escape' to close modal
   window.addEventListener('keydown', (e) => {
