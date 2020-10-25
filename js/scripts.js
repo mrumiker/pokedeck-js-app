@@ -95,6 +95,7 @@ let pokemonRepository = (function() {
   }
   //create function to get pokemons from external api
   function loadList() {
+    showLoadingMessage();
     return fetch(apiUrl).then(function(response) {
       return response.json();
     }).then(function (json) {
@@ -107,11 +108,12 @@ let pokemonRepository = (function() {
       });
     }).catch(function(e) {
       console.error(e);
-    })
+    }).finally(hideLoadingMessage());
   }
 
   //create function to load details from URL
   function loadDetails(item) {
+    showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url).then(function(response) {
       return response.json();
@@ -123,7 +125,7 @@ let pokemonRepository = (function() {
       item.types = details.types;
     }).catch(function(e) {
       console.error(e);
-    });
+    }).finally(hideLoadingMessage());
   }
   //allow user to press 'escape' to close modal
   window.addEventListener('keydown', (e) => {
@@ -139,6 +141,28 @@ let pokemonRepository = (function() {
       return 'Not Found';
     }
     return myArray;
+  }
+
+  function showLoadingMessage() {
+    let main = document.querySelector('main');
+
+    //Create modal
+    let modalContainer = document.createElement('div');
+    modalContainer.className = 'is-visible';
+    modalContainer.id = 'modal-container';
+    let loadModal = document.createElement('div');
+    loadModal.className = 'modal';
+    let loadMessage = document.createElement('p');
+    loadMessage.innerText = 'Loading...';
+
+    loadModal.appendChild(loadMessage);
+    modalContainer.appendChild(loadModal);
+    main.appendChild(modalContainer);
+  }
+
+  function hideLoadingMessage() {
+    let modalContainer = document.querySelector('#modal-container');
+    modalContainer.remove();
   }
   //Return object with all functions
   return {
