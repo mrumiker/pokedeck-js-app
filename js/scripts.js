@@ -18,9 +18,13 @@ let pokemonRepository = (function() {
   function addListItem(pokemon) {
     let pokeList = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
+    listItem.classList.add('list-group-item', 'list-group-item-action');
     let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add('button');
+    button.classList.add('button', 'btn', 'btn-primary', 'btn-block');
+    button.setAttribute('type', 'button');
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#exampleModal');
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
     //log pokemon info in console when button is clicked
@@ -31,22 +35,11 @@ let pokemonRepository = (function() {
   //create function to show details of pokemon in console
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function() {
-      let modalContainer = document.querySelector('#modal-container');
-      //clear anything remaining in modalContainer
-      modalContainer.innerHTML = '';
-      //Create modal
-      let modal = document.createElement('div');
-      modal.classList.add('modal');
-      //Create close button
-      let closeButtonElement = document.createElement('button');
-      closeButtonElement.classList.add('modal-close');
-      closeButtonElement.innerText = 'Close';
-      closeButtonElement.addEventListener('click', hideModal);
-      //Create Title
-      let titleElement = document.createElement('h2');
+
+      let titleElement = document.querySelector('#pokename');
       titleElement.innerText = pokemon.name;
       //Create height element
-      let heightElement = document.createElement('p');
+      let heightElement = document.querySelector('#height');
       if (pokemon.height > 49) {
         heightElement.innerText = (`height:  ${pokemon.height} - Wow, that's a big pokemon! 🤩`);
       }
@@ -54,7 +47,7 @@ let pokemonRepository = (function() {
         heightElement.innerText = (`height:  ${pokemon.height}`);
       }
       //Create weight element
-      let weightElement = document.createElement('p');
+      let weightElement = document.querySelector('#weight');
       if (pokemon.weight > 499) {
         weightElement.innerText = (`weight:  ${pokemon.weight} - Wow, that's a plump pokemon! 🤩`);
       }
@@ -62,29 +55,10 @@ let pokemonRepository = (function() {
         weightElement.innerText = (`weight:  ${pokemon.weight}`);
       }
       //Create image element
-      let imageElement = document.createElement('img');
+      let imageElement = document.querySelector('#pokepic');
       imageElement.src = pokemon.imageUrl;
-      //Hang the elements onto the modal
-      modal.appendChild(closeButtonElement);
-      modal.appendChild(titleElement);
-      modal.appendChild(heightElement);
-      modal.appendChild(weightElement);
-      modal.appendChild(imageElement);
-      //Hang the modal on the container
-      modalContainer.appendChild(modal);
-      //Make the modal appear
-      modalContainer.classList.add('is-visible');
 
-
-
-      //allow user to click outside modal to close modal
-      modalContainer.addEventListener('click', (e) => {
-        let target = e.target;
-        if (target === modalContainer) {
-          hideModal();
-        }
-      });
-    }).catch(function(e) {
+      }).catch(function(e) {
       console.error(e);
     });
   }
