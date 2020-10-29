@@ -18,9 +18,10 @@ let pokemonRepository = (function() {
   function addListItem(pokemon) {
     let pokeList = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
+    listItem.classList.add('list-group-item', 'list-group-item-action');
     let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add('button');
+    button.classList.add('button', 'btn', 'btn-primary', 'btn-block');
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
     //log pokemon info in console when button is clicked
