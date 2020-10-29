@@ -63,11 +63,7 @@ let pokemonRepository = (function() {
       console.error(e);
     });
   }
-  //create function to hide the modal
-  function hideModal() {
-    let modalContainer = document.querySelector('#modal-container');
-    modalContainer.classList.remove('is-visible');
-  }
+
   //create function to get pokemons from external api
   function loadList() {
     return fetch(apiUrl).then(function(response) {
@@ -87,7 +83,6 @@ let pokemonRepository = (function() {
 
   //create function to load details from URL
   function loadDetails(item) {
-//    showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url).then(function(response) {
       return response.json();
@@ -101,13 +96,7 @@ let pokemonRepository = (function() {
       console.error(e);
     });
   }
-  //allow user to press 'escape' to close modal
-  window.addEventListener('keydown', (e) => {
-    let modalContainer = document.querySelector('#modal-container');
-    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-      hideModal();
-    }
-  });
+
   //Create function to search for Pokemon entry by name
   function namesearch(myName) {
     let myArray = pokemonRepository.getAll().filter(pokemon => pokemon.name === myName);
@@ -120,16 +109,12 @@ let pokemonRepository = (function() {
   //Return object with all functions
   return {
     getAll: getAll,
-    addpoke: addpoke,
     addListItem: addListItem,
-    showDetails: showDetails,
     loadList: loadList,
-    loadDetails: loadDetails,
-    namesearch: namesearch,
-    hideModal: hideModal
   };
 })();
 
+//Create massive block of pokemon buttons
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
