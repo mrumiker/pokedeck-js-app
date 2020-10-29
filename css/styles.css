@@ -60,19 +60,19 @@ ul {
   border-radius: var(--rounding);
   border-bottom: 2px solid var(--border-color);
   transition: 0.2s opacity;
-  }
+}
 
 .button:hover,
 .button:focus
-  {
-    cursor: pointer;
-    opacity: 0.7;
-  }
+{
+  cursor: pointer;
+  opacity: 0.7;
+}
 
-  p.modal-body-text,
-  img.modal-body-image {
-    display: block;
-  }
+p.modal-body-text,
+img.modal-body-image {
+  display: block;
+}
 
 @media all and (min-width: 1025px) {
 

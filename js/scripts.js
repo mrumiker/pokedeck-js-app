@@ -62,7 +62,7 @@ let pokemonRepository = (function() {
       imageElement.src = pokemon.imageUrl;
       imageElement.setAttribute('alt', `picture of ${pokemon.name}`);
 
-      }).catch(function(e) {
+    }).catch(function(e) {
       console.error(e);
     });
   }
