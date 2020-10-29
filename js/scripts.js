@@ -10,7 +10,7 @@ let pokemonRepository = (function() {
   }
 
   //Create function to add entry to pokemonList
-  function add(pokemon) {
+  function addpoke(pokemon) {
     pokemonList.push(pokemon);
     return 0;
   }
@@ -24,7 +24,7 @@ let pokemonRepository = (function() {
     button.classList.add('button', 'btn', 'btn-primary', 'btn-block');
     button.setAttribute('type', 'button');
     button.setAttribute('data-toggle', 'modal');
-    button.setAttribute('data-target', '#exampleModal');
+    button.setAttribute('data-target', '#pokeModal');
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
     //log pokemon info in console when button is clicked
@@ -32,7 +32,7 @@ let pokemonRepository = (function() {
       showDetails(pokemon);
     });
   }
-  //create function to show details of pokemon in console
+  //create function to show details of pokemon in modal
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function() {
 
@@ -57,6 +57,7 @@ let pokemonRepository = (function() {
       //Create image element
       let imageElement = document.querySelector('#pokepic');
       imageElement.src = pokemon.imageUrl;
+      imageElement.setAttribute('alt', `picture of ${pokemon.name}`);
 
       }).catch(function(e) {
       console.error(e);
@@ -69,7 +70,6 @@ let pokemonRepository = (function() {
   }
   //create function to get pokemons from external api
   function loadList() {
-    showLoadingMessage();
     return fetch(apiUrl).then(function(response) {
       return response.json();
     }).then(function (json) {
@@ -78,16 +78,16 @@ let pokemonRepository = (function() {
           name: item.name,
           detailsUrl: item.url
         };
-        add(pokemon);
+        addpoke(pokemon);
       });
     }).catch(function(e) {
       console.error(e);
-    }).finally(() => hideLoadingMessage());
+    });
   }
 
   //create function to load details from URL
   function loadDetails(item) {
-    showLoadingMessage();
+//    showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url).then(function(response) {
       return response.json();
@@ -99,7 +99,7 @@ let pokemonRepository = (function() {
       item.types = details.types;
     }).catch(function(e) {
       console.error(e);
-    }).finally(() => hideLoadingMessage());
+    });
   }
   //allow user to press 'escape' to close modal
   window.addEventListener('keydown', (e) => {
@@ -117,31 +117,10 @@ let pokemonRepository = (function() {
     return myArray;
   }
 
-  function showLoadingMessage() {
-    let main = document.querySelector('main');
-
-    //Create modal
-    let modalContainer = document.createElement('div');
-    modalContainer.className = 'is-visible';
-    modalContainer.id = 'modal-container';
-    let loadModal = document.createElement('div');
-    loadModal.className = 'modal';
-    let loadMessage = document.createElement('p');
-    loadMessage.innerText = 'Loading...';
-
-    loadModal.appendChild(loadMessage);
-    modalContainer.appendChild(loadModal);
-    main.appendChild(modalContainer);
-  }
-
-  function hideLoadingMessage() {
-    let modalContainer = document.querySelector('#modal-container');
-    modalContainer.remove();
-  }
   //Return object with all functions
   return {
     getAll: getAll,
-    add: add,
+    addpoke: addpoke,
     addListItem: addListItem,
     showDetails: showDetails,
     loadList: loadList,
@@ -155,12 +134,4 @@ pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
-});
-
-//make forEach loop to get names and heights of each pokemon and print them
-
-let pokeList = document.querySelector('.pokemon-list');
-
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon);
 });

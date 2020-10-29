@@ -36,7 +36,7 @@
 
 
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="pokeModal" tabindex="-1" role="dialog" aria-labelledby="pokeModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -48,7 +48,7 @@
             <div class="modal-body">
               <p class="modal-body-text" id="height"></p>
               <p class="modal-body-text" id="weight"></p>
-              <img class="modal-body-image" id="pokepic" />
+              <img class="modal-body-image" src="#" id="pokepic" alt="" /> <!-- src and alt values are added by JS -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal" name="Close">Close</button>
@@ -61,7 +61,6 @@
 
     </main>
 
-    <div id="modal-container"></div>
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
     <script src="js/scripts.js"></script>
