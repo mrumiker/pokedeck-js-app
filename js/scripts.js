@@ -27,7 +27,7 @@ let pokemonRepository = (function() {
     button.setAttribute('data-target', '#pokeModal');
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
-    //log pokemon info in console when button is clicked
+    //log pokemon info in modal when button is clicked
     button.addEventListener('click', function(event) {
       showDetails(pokemon);
     });
