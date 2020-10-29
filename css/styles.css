@@ -125,3 +125,8 @@ ul {
 .modal p {
   margin-bottom: 15px;
 }
+
+p.modal-body-text,
+img.modal-body-image {
+  display: block;
+}
