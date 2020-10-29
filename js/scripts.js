@@ -29,6 +29,9 @@ let pokemonRepository = (function() {
     pokeList.appendChild(listItem);
     //log pokemon info in modal when button is clicked
     button.addEventListener('click', function(event) {
+      //clear modal before loading new data
+      $('.modal').removeData('bs.modal');
+      //get pokemon stats and send to modal
       showDetails(pokemon);
     });
   }
