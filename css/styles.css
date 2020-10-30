@@ -16,6 +16,10 @@
   box-sizing: border-box;
 }
 
+.navbar {
+  padding: 16px;
+}
+
 a.navbar-brand {
   font-size: 2em;
 }
@@ -29,7 +33,7 @@ body {
 
 main {
   padding: 0 27px;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 
@@ -42,16 +46,22 @@ li {
   margin: auto;
 }
 
+.list-group-item {
+  border: none;
+}
+
 .button,
 .button:visited {
   border: none;
   display: inline-block;
   font-family: inherit;
-  margin: 10px 0;
+  margin: 5px 0;
   background-color: var(--primary-color);
   color: var(--button-text);
   font-size: 1em;
   text-decoration: none;
+  text-transform: capitalize;
+  letter-spacing: .1em;
   padding: var(--primary-padding);
   border-radius: var(--rounding);
   border-bottom: 2px solid var(--border-color);
@@ -65,8 +75,8 @@ li {
   opacity: 0.7;
 }
 
-h6.modal-title  {
-
+#pokename  {
+  text-transform: capitalize;
 }
 
 p.modal-body-text,
