@@ -28,7 +28,7 @@ let pokemonRepository = (function() {
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
     //log pokemon info in modal when button is clicked
-    button.addEventListener('click', function(event) {
+    button.addEventListener('click', function() {
       //clear modal before loading new data
       $('.modal').removeData('bs.modal');
       //get pokemon stats and send to modal
@@ -63,7 +63,9 @@ let pokemonRepository = (function() {
       imageElement.setAttribute('alt', `picture of ${pokemon.name}`);
 
     }).catch(function(e) {
+      /* eslint-disable no-console */
       console.error(e);
+      /* eslint-enable no-console */
     });
   }
 
@@ -80,7 +82,9 @@ let pokemonRepository = (function() {
         addpoke(pokemon);
       });
     }).catch(function(e) {
+      /* eslint-disable no-console */
       console.error(e);
+      /* eslint-enable no-console */
     });
   }
 
@@ -96,17 +100,10 @@ let pokemonRepository = (function() {
       item.weight = details.weight;
       item.types = details.types;
     }).catch(function(e) {
+      /* eslint-disable no-console */
       console.error(e);
+      /* eslint-enable no-console */
     });
-  }
-
-  //Create function to search for Pokemon entry by name
-  function namesearch(myName) {
-    let myArray = pokemonRepository.getAll().filter(pokemon => pokemon.name === myName);
-    if (myArray.length === 0) {
-      return 'Not Found';
-    }
-    return myArray;
   }
 
   //Return object with all functions
