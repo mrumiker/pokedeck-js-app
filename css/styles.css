@@ -30,23 +30,18 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-
 main {
   padding: 0 27px;
   margin-top: 80px;
 }
 
-
 ul {
   list-style-type: none;
 }
 
-li {
+.list-group-item {
   max-width: 500px;
   margin: auto;
-}
-
-.list-group-item {
   border: none;
 }
 
