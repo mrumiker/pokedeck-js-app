@@ -1,6 +1,9 @@
 let pokemonRepository = (function() {
+
   // initialize an empty array
+
   let pokemonList = [];
+
   // identify target URL where pokemons live and assign to variable
   const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1050';
 
@@ -15,7 +18,6 @@ let pokemonRepository = (function() {
     return 0;
   }
 
-  //Create function to make buttons with name of each pokemon
   //Create function to make buttons with name of each pokemon
   function addListItem(pokemon) {
     let pokeList = document.querySelector('.pokemon-list');
