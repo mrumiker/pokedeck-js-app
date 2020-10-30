@@ -58,7 +58,6 @@ let pokemonRepository = (function() {
       else {
         heightElement.innerText = (`height:  ${pokemon.height}`);
       }
-      //Create weight element
 
       if (pokemon.weight > 499) {
         weightElement.innerText = (`weight:  ${pokemon.weight} - Wow, that's a plump pokemon! 🤩`);
@@ -66,8 +65,7 @@ let pokemonRepository = (function() {
       else {
         weightElement.innerText = (`weight:  ${pokemon.weight}`);
       }
-      //Create image element
-
+      
       imageElement.src = pokemon.imageUrl;
       imageElement.setAttribute('alt', `picture of ${pokemon.name}`);
 
