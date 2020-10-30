@@ -16,34 +16,30 @@
   box-sizing: border-box;
 }
 
+a.navbar-brand {
+  font-size: 2em;
+}
+
 body {
   text-align: justify;
   line-height: 25px;
   font-family: 'Montserrat', sans-serif;
 }
 
-.page-header {
-  display: flex;
-  width: 100%;
-  padding: 20px;
-  align-items: center;
-}
-
-.page-header__item {
-  flex: 0 1 200px;
-}
-
-.page-header__item:first-child {
-  height: 40px;
-}
 
 main {
   padding: 0 27px;
-  margin-top: 30px;
+  margin-top: 100px;
 }
+
 
 ul {
   list-style-type: none;
+}
+
+li {
+  max-width: 500px;
+  margin: auto;
 }
 
 .button,
@@ -67,6 +63,10 @@ ul {
 {
   cursor: pointer;
   opacity: 0.7;
+}
+
+h6.modal-title  {
+
 }
 
 p.modal-body-text,
