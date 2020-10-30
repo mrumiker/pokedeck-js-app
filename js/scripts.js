@@ -37,12 +37,21 @@ let pokemonRepository = (function() {
   }
   //create function to show details of pokemon in modal
   function showDetails(pokemon) {
+    //Set variables in modal
+    let titleElement = document.querySelector('#pokename');
+    let heightElement = document.querySelector('#height');
+    let weightElement = document.querySelector('#weight');
+    let imageElement = document.querySelector('#pokepic');
+    //Create loading screen for slow connections
+    titleElement.innerText = 'Loading...';
+    heightElement.innerText = '...';
+    weightElement.innerText = '...';
+    imageElement.src = '#';
+
     loadDetails(pokemon).then(function() {
 
-      let titleElement = document.querySelector('#pokename');
       titleElement.innerText = pokemon.name;
-      //Create height element
-      let heightElement = document.querySelector('#height');
+
       if (pokemon.height > 49) {
         heightElement.innerText = (`height:  ${pokemon.height} - Wow, that's a big pokemon! 🤩`);
       }
@@ -50,7 +59,7 @@ let pokemonRepository = (function() {
         heightElement.innerText = (`height:  ${pokemon.height}`);
       }
       //Create weight element
-      let weightElement = document.querySelector('#weight');
+
       if (pokemon.weight > 499) {
         weightElement.innerText = (`weight:  ${pokemon.weight} - Wow, that's a plump pokemon! 🤩`);
       }
@@ -58,7 +67,7 @@ let pokemonRepository = (function() {
         weightElement.innerText = (`weight:  ${pokemon.weight}`);
       }
       //Create image element
-      let imageElement = document.querySelector('#pokepic');
+
       imageElement.src = pokemon.imageUrl;
       imageElement.setAttribute('alt', `picture of ${pokemon.name}`);
 
