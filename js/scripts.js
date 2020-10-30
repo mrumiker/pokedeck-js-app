@@ -14,6 +14,7 @@ let pokemonRepository = (function() {
     pokemonList.push(pokemon);
     return 0;
   }
+
   //Create function to make buttons with name of each pokemon
   //Create function to make buttons with name of each pokemon
   function addListItem(pokemon) {
@@ -35,7 +36,9 @@ let pokemonRepository = (function() {
       var pokemon = button.data('pokemonobject');
       var modal = $(this);
       loadDetails(pokemon).then(function() {
+
         modal.find('#pokename').text(pokemon.name);
+        
         if (pokemon.height > 49) {
           modal.find('#height').text(`height:  ${pokemon.height} - Wow, that's a big pokemon! 🤩`);
         }
