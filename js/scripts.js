@@ -38,7 +38,7 @@ let pokemonRepository = (function() {
       loadDetails(pokemon).then(function() {
 
         modal.find('#pokename').text(pokemon.name);
-        
+
         if (pokemon.height > 49) {
           modal.find('#height').text(`height:  ${pokemon.height} - Wow, that's a big pokemon! 🤩`);
         }
@@ -103,9 +103,7 @@ let pokemonRepository = (function() {
 
   //Return object with all functions
   return {
-    getAll: getAll,
-    addListItem: addListItem,
-    loadList: loadList,
+    getAll, addListItem, loadList
   };
 })();
 
