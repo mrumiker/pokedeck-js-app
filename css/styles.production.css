@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 2 version
+*/
+
 :root
 {
   --primary-color: #DA3D00;
@@ -8,7 +15,8 @@
 }
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .navbar {
@@ -53,6 +61,7 @@ ul {
   padding: var(--primary-padding);
   border-radius: var(--rounding);
   border-bottom: 2px solid var(--border-color);
+  -webkit-transition: 0.2s opacity;
   transition: 0.2s opacity;
 }
 
