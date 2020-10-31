@@ -9,7 +9,7 @@ let pokemonRepository = (function() {
 
   //Declare functions
   function getAll() {
-    return pokemonList; 
+    return pokemonList;
   }
 
   //Create function to add entry to pokemonList
