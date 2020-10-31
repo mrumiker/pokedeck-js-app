@@ -25,7 +25,6 @@ a.navbar-brand {
 }
 
 body {
-  text-align: justify;
   line-height: 25px;
   font-family: 'Montserrat', sans-serif;
 }
@@ -45,10 +44,14 @@ ul {
   border: none;
 }
 
+.list-group-item-action:focus
+.list-group-item-action:hover {
+  background-color: #fff;
+}
+
 .button,
 .button:visited {
   border: none;
-  display: inline-block;
   font-family: inherit;
   margin: 5px 0;
   background-color: var(--primary-color);
@@ -63,11 +66,11 @@ ul {
   transition: 0.2s opacity;
 }
 
-.button:hover,
-.button:focus
+.button:hover
 {
   cursor: pointer;
   opacity: 0.7;
+  background-color: #000;
 }
 
 #pokename  {
