@@ -1,6 +1,5 @@
 # Pokedex
 
-## Screenshot
 ![Pokedex Screenshot](/img/Pokedex_Screenshot.png)
 
 ## About the App
